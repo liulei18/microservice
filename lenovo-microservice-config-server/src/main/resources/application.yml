@@ -1,0 +1,34 @@
+server:
+  port: ${port:6688} #服务端口
+
+spring:
+  application:
+    name: lenovo-microservice-config-server #指定服务名
+  cloud:
+    config:
+      server:
+        git: #配置git仓库地址
+          uri: ${gitUrl:https://github.com/liulei18/lenovo-config-server.git}
+          #username: zhangzhijun
+          #password: 123456
+  rabbitmq: #RabbitMQ相关的配置
+    host: ${rabbitMQHost:127.0.0.1}
+    port: ${rabbitMQPort:5672}
+    username: ${rabbitMQUsername:guest}
+    password: ${rabbitMQPassword:guest}
+
+
+eureka:
+  client:
+    registerWithEureka: true #是否将自己注册到Eureka服务中，默认为true
+    fetchRegistry: true #是否从Eureka中获取注册信息，默认为true
+    serviceUrl: #Eureka客户端与Eureka服务端进行交互的地址
+      defaultZone: ${eurekaServerUrl:http://lenovo:lenovo123@127.0.0.1:6868/eureka/}
+  instance:
+    prefer-ip-address: true #将自己的ip地址注册到Eureka服务中
+    ipAddress: ${ipAddress:127.0.0.1}
+
+management:
+  security:
+    enabled: false #是否开启actuator安全认证
+

@@ -1,0 +1,21 @@
+server:
+  port: ${port:8181} #服务端口
+
+spring:
+  application:
+    name: lenovo-microservice-item #指定服务名
+
+eureka:
+  client:
+    registerWithEureka: true #是否将自己注册到Eureka服务中，默认为true
+    fetchRegistry: true #是否从Eureka中获取注册信息，默认为true
+    serviceUrl: #Eureka客户端与Eureka服务端进行交互的地址
+      defaultZone: ${eurekaServerUrl:http://lenovo:lenovo123@127.0.0.1:6868/eureka/}
+  instance:
+    prefer-ip-address: true #将自己的ip地址注册到Eureka服务中
+    ip-address: ${ipAddress:127.0.0.1}
+
+management:
+  security:
+    enabled: false #是否开启actuator安全认证
+
